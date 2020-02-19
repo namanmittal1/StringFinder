@@ -1,0 +1,176 @@
+﻿<Window x:Class="StringFinder.DataViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:StringFinder"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DataViewer" Height="330" Width="645" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+
+        <ResourceDictionary Source="/GlobalResourceDictionary.xaml"/>
+
+    </Window.Resources>
+    
+        <Grid>
+
+            <TabControl HorizontalAlignment="Left"
+		    Height="290" 
+		    Margin="0,0,0,0" 
+		    VerticalAlignment="Top">
+
+
+            <TabItem DataContext="{Binding Path=TextInstance}" Style="{StaticResource TabItemStyle}">
+                
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Text File "/>
+                        <TextBlock Text="{Binding SearchCount}"/>                         
+                    </StackPanel>
+                </TabItem.Header>
+
+                <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Grid Background="#FFE5E5E5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                        <ListView SelectedItem="{Binding Path=SelectedListItem,Mode=OneWayToSource}" ItemsSource="{Binding Path=TestData,UpdateSourceTrigger=PropertyChanged}" Cursor="Hand">
+                            <ListView.View>
+
+                                <GridView>
+                                    <GridViewColumn Header="File" Width="220" DisplayMemberBinding="{Binding FilenameList}"/>
+                                    <GridViewColumn Header="Line" Width="50" DisplayMemberBinding="{Binding Linenumber_List}"/>
+                                    <GridViewColumn Header="Column" Width="60" DisplayMemberBinding="{Binding Position_List}"/>
+                                    <GridViewColumn Header="Data" Width="270" DisplayMemberBinding="{Binding Data_String}"/>
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+
+
+            <TabItem DataContext="{Binding Path=ExcelInstance}" Style="{StaticResource TabItemStyle}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Excel File "/>
+                        <TextBlock Text="{Binding SearchCount}"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ListView  SelectedItem="{Binding Path=SelectedListItem,Mode=OneWayToSource}" ItemsSource="{Binding Path=ExcelData,UpdateSourceTrigger=PropertyChanged}" Cursor="Hand">
+                            <ListView.View>
+
+                                <GridView>
+                                    <GridViewColumn Header="File" Width="220" DisplayMemberBinding="{Binding FilenameList}"/>
+                                    <GridViewColumn Header="Row" Width="50" DisplayMemberBinding="{Binding Linenumber_List}"/>
+                                    <GridViewColumn Header="Column" Width="60" DisplayMemberBinding="{Binding Position_List}"/>
+                                    <GridViewColumn Header="Data" Width="270" DisplayMemberBinding="{Binding Data_String}"/>
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+
+            <TabItem DataContext="{Binding Path=PDFInstance}" Style="{StaticResource TabItemStyle}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="PDF File "/>
+                        <TextBlock Text="{Binding SearchCount}"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ListView SelectedItem="{Binding Path=SelectedListItem,Mode=OneWayToSource}" ItemsSource="{Binding Path=PDFData,UpdateSourceTrigger=PropertyChanged}" Cursor="Hand">
+                            <ListView.View>
+
+                                <GridView>
+                                    <GridViewColumn Header="File" Width="220" DisplayMemberBinding="{Binding FilenameList}"/>
+                                    <GridViewColumn Header="X" Width="50" DisplayMemberBinding="{Binding Linenumber_List}"/>
+                                    <GridViewColumn Header="Y" Width="60" DisplayMemberBinding="{Binding Position_List}"/>
+                                    <GridViewColumn Header="Data" Width="270" DisplayMemberBinding="{Binding Data_String}"/>
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+
+            <TabItem DataContext="{Binding Path=WordInstance}" Style="{StaticResource TabItemStyle}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Word File "/>
+                        <TextBlock Text="{Binding SearchCount}"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ListView SelectedItem="{Binding Path=SelectedListItem,Mode=OneWayToSource}" ItemsSource="{Binding Path=WordData,UpdateSourceTrigger=PropertyChanged}" Cursor="Hand">
+                            <ListView.View>
+
+                                <GridView>
+                                    <GridViewColumn Header="File" Width="220" DisplayMemberBinding="{Binding FilenameList}"/>
+                                    <GridViewColumn Header="Page" Width="60" DisplayMemberBinding="{Binding Page_Number}"/>
+                                    <GridViewColumn Header="Line" Width="50" DisplayMemberBinding="{Binding Para_Num}"/>
+                                    <GridViewColumn Header="Data" Width="270" DisplayMemberBinding="{Binding Data_String}"/>
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem DataContext="{Binding Path=XMLInstance}" Style="{StaticResource TabItemStyle}">
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="XML File "/>
+                        <TextBlock Text="{Binding SearchCount}"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ListView SelectedItem="{Binding Path=SelectedListItem,Mode=OneWayToSource}" ItemsSource="{Binding Path=XMLData,UpdateSourceTrigger=PropertyChanged}" Cursor="Hand">
+                            <ListView.View>
+
+                                <GridView>
+                                    <GridViewColumn Header="File" Width="220" DisplayMemberBinding="{Binding FilenameList}"/>
+                                    <GridViewColumn Header="Line" Width="50" DisplayMemberBinding="{Binding Linenumber_List}"/>
+                                    <GridViewColumn Header="Column" Width="60" DisplayMemberBinding="{Binding Position_List}"/>
+                                    <GridViewColumn Header="Data" Width="270" DisplayMemberBinding="{Binding Data_String}"/>
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+        </TabControl>
+        </Grid>
+</Window>
+   
